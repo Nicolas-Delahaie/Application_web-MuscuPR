@@ -26,6 +26,7 @@ function Exercices() {
     const [exercices, setExercices] = useState(null);
     const [exercicesRecherches, setExercicesRecherches] = useState(null);
     const [indexExerciceAffiche, setIndexExerciceAffiche] = useState(null);     // Id de l'exerice DANS exerices
+    const [erreur, setErreur] = useState(null);
 
     // Loaders
     var creatingProgram = false;
@@ -43,7 +44,7 @@ function Exercices() {
             setProgrammes(rep.datas);
         }
         else {
-            console.log(rep.erreur)
+            setErreur(rep.erreur)
         }
 
     }
@@ -238,6 +239,9 @@ function Exercices() {
                                     <CarteExercice exercice={exercice} indexExo={index} addOrRemove={"remove"} cliquable={true} key={exercice.id} />
                                 )}
                             </>
+                    }
+                    {
+                        erreur && <p>{erreur}</p>
                     }
                 </div>
             </ContexteExercice.Provider >
